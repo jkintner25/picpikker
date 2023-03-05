@@ -14,3 +14,4 @@ const ImageTile = ({image}) => {
 };
 
 export default ImageTile;
+
