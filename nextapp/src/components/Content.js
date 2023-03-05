@@ -1,16 +1,10 @@
 import { useState, useEffect } from "react";
-import { unsplashAPI } from "@/pages/api/unsplash";
+import { fetchImages, unsplashAPI } from "@/pages/api/unsplash";
 import ImageTile from "./ImageTile";
 import Search from "./Search";
 
 const Content = () => {
   const [images, setImages] = useState([]);
-
-  const fetchImages = async () => {
-    let images = await fetch(unsplashAPI.photos)
-    let data = await images.json()
-    return data;
-  };
 
   useEffect(() => {
     fetchImages().then(res => {
@@ -19,7 +13,7 @@ const Content = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex-col justify-center items-center">
       <Search setImages={setImages} />
       <div className="w-full max-w-7xl p-5 pb-10 mx-auto mb-10 gap-3 columns-4 space-y-5">
         {images ? images.map((image) => {
