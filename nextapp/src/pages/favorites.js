@@ -1,8 +1,9 @@
-import Head from 'next/head'
-import Content from '@/components/Content'
-import Nav from '@/components/Nav'
+import Nav from "@/components/Nav";
+import Head from "next/head";
+import { useState } from "react";
 
-export default function Home() {
+const Favorites = () => {
+const [favImages, setFavImages] = useState([])
 
   return (
     <>
@@ -14,9 +15,11 @@ export default function Home() {
       </Head>
       <Nav />
       <main className='flex-col w-full items-center justify-center'>
-        <h1 className='text-7xl font-bold text-center my-20' >Welcome to Pic Pikk&uuml;r</h1>
-        <Content />
+        <h1 className='text-7xl font-bold text-center my-20' >Favs</h1>
+
       </main>
     </>
   )
 };
+
+export default Favorites;
