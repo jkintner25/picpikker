@@ -1,3 +1,4 @@
+import ImageTile from "@/components/ImageTile";
 import Nav from "@/components/Nav";
 import Head from "next/head";
 import { useState } from "react";
@@ -15,8 +16,13 @@ const [favImages, setFavImages] = useState([])
       </Head>
       <Nav />
       <main className='flex-col w-full items-center justify-center'>
-        <h1 className='text-7xl font-bold text-center my-20' >Favs</h1>
-
+        <h1 className='text-7xl font-bold text-center my-20' >Favorites</h1>
+        {favImages.length ? favImages.map(image=>{
+          return <ImageTile key={image.id} image={image} />
+        })
+        :
+        <p className="text-center">Select your favorite images!</p>
+        }
       </main>
     </>
   )
