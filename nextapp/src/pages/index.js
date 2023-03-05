@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='flex-col w-full items-center justify-center'>
-        <h1 className='text-4xl font-bold text-center' >Welcome to Pic Pikk&uuml;r</h1>
+        <h1 className='text-7xl font-bold text-center my-20' >Welcome to Pic Pikk&uuml;r</h1>
         <Content />
       </main>
     </>

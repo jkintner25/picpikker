@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchImages, unsplashAPI } from "@/pages/api/unsplash";
+import { fetchImages } from "@/pages/api/unsplash";
 import ImageTile from "./ImageTile";
 import Search from "./Search";
 
