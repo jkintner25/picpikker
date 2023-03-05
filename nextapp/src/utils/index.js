@@ -1,4 +1,4 @@
-export function useLocalStorage(key, initialValue) {
+export function doLocalStorage(key, initialValue) {
 
     // if item is already in localStorage:
 
