@@ -1,24 +1,22 @@
 export function doLocalStorage(key, initialValue) {
 
     // if item is already in localStorage:
-
     // Get from local storage by key
     const item = window.localStorage.getItem(key);
+
     // If it's already in the storage, remove it from storage
     if (item) localStorage.removeItem(key);
 
     // not in local storage:
-
     if (typeof window !== "undefined") {
         window.localStorage.setItem(key, JSON.stringify(initialValue));
     }
 };
 
-export function checkIfInStorage(imgId) {
-
-    // return true if in storage already
-    const item = window.localStorage.getItem(imgId);
+export function checkIfInStorage(id) {
+    let item = window.localStorage.getItem(id);
     return item ? true : false;
+    // return true if in storage already
     // return false if not
 }
 
@@ -31,3 +29,24 @@ export function isEmpty(obj) {
 
     return true;
 };
+
+export const localStorageReducer = (returnObj, key, value) => {
+    if (typeof window !== 'undefined') {
+        if (localStorage.getItem(key)) localStorage.removeItem(key)
+        else localStorage.setItem(key, value)
+        if (returnObj) {
+            return localStorage
+        }
+    }
+}
+
+export const clearLocalStorage = () => {
+    if (typeof window !== 'undefined') {
+        localStorage.clear()
+    }
+}
+
+export const checkFavorite = (storage, key) => {
+    if (storage.hasOwnProperty(key)) return true
+    else return false
+}
