@@ -7,7 +7,7 @@ const ImageTile = ({image}) => {
   // toggle heart on image load if the image is in favorites already
   useEffect(() => {
     checkIfInStorage(image.id) ? setFavorited(true) : setFavorited(false);
-  }, [favorited]);
+  }, []);
 
   return (
     <div className="group relative">
