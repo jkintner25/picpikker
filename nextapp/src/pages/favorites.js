@@ -11,7 +11,6 @@ const Favorites = () => {
   useEffect(()=>{
     let images = Object.values(imageStore)
     setFavs(images)
-    console.log(images)
   }, [imageStore])
 
   const handleSelect = () => {

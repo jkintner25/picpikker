@@ -27,15 +27,11 @@ const Content = () => {
   const handleSelect = (image) => {
     if (imageStore[image.id]) {
       removeItem(dispatch, image)
-      console.log('REMOVE ITEM')
     } else {
       addItem(dispatch, image)
-      console.log('ADD ITEM')
     }
     setClickedImage(!clickedImage)
   }
-
-  console.log(imageStore)
 
   return (
     <div className="flex-col justify-center items-center">

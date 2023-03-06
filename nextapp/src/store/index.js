@@ -15,7 +15,6 @@ export const reducer = (state, action) => {
 
   switch (type) {
     case GET_STORAGE: {
-      // console.log('GET STORAGE PAYLOAD', payload)
       let newState = initialState
       payload.forEach(image => {
         newState[image.id] = image
