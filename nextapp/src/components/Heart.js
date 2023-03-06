@@ -1,29 +1,27 @@
-import { checkIfInStorage, localStorageReducer, checkFavorite } from '@/utils';
-import { useState, useEffect } from 'react';
+import { useAppContext } from '@/context';
+import { localStorageReducer, checkFavorite } from '@/utils';
+import { useState, useEffect, useReducer } from 'react';
 
-const Heart = ({ image }) => {
+const Heart = ({ image, handleSelect }) => {
+  const {imageStore} = useAppContext()
   const [favorited, setFavorited] = useState(false);
-  const [storage, setStorage] = useState({})
+  const [bing, setBing] = useState(false)
 
-  useEffect(() => {
-    setStorage(localStorageReducer(true))
-  }, [])
+  useEffect(()=>{
+    if (imageStore[image.id]) setFavorited(true)
+    else setFavorited(false)
+  }, [imageStore])
 
-  useEffect(() => {
-    setFavorited(checkFavorite(storage, image.id))
-    console.log(storage)
-  }, [storage])
-
-  const handleSelect = () => {
-    let data = localStorageReducer(true, image.id, image.urls.small)
-    setStorage(data)
+  const handleClick = () => {
+    handleSelect(image)
+    setBing(!bing)
   }
 
   return (
     <>
       <button
         className="invisible group-hover:visible absolute top-0 right-2 text-white font-bold uppercase text-sm px-6 py-3 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        onClick={handleSelect}
+        onClick={handleClick}
       >
         {favorited ?
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">

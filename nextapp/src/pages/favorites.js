@@ -1,9 +1,22 @@
+import ImageTile from "@/components/ImageTile";
 import Nav from "@/components/Nav";
+import { useAppContext } from "@/context";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Favorites = () => {
-const [favImages, setFavImages] = useState([])
+  const {imageStore} = useAppContext()
+  const [favs, setFavs] = useState([])
+
+  useEffect(()=>{
+    let images = Object.values(imageStore)
+    setFavs(images)
+    console.log(images)
+  }, [imageStore])
+
+  const handleSelect = () => {
+
+  }
 
   return (
     <>
@@ -15,8 +28,15 @@ const [favImages, setFavImages] = useState([])
       </Head>
       <Nav />
       <main className='flex-col w-full items-center justify-center'>
-        <h1 className='text-7xl font-bold text-center my-20' >Favs</h1>
+        <h1 className='text-7xl font-bold text-center my-20' >Favorites</h1>
+        <div className="w-full max-w-7xl p-5 pb-10 mx-auto mb-10 gap-3 columns-4 space-y-5">
 
+        {favs ? favs.map(image=>{
+          return <ImageTile key={image.id} image={image} handleSelect={handleSelect} />
+        })
+        :
+        <h1>Pick some pics!</h1>}
+        </div>
       </main>
     </>
   )
