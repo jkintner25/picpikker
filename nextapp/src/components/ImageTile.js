@@ -9,7 +9,7 @@ const ImageTile = ({ image, handleSelect }) => {
         alt={image.description || "image from unsplash"}
         src={image.urls?.small}
       />
-      <Heart image={image} handleSelect={handleSelect} />
+      <Heart image={image} handleSelect={()=>handleSelect(image)} />
     </div>
   );
 };

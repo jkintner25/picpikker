@@ -1,11 +1,12 @@
 import ImageTile from "@/components/ImageTile";
 import Nav from "@/components/Nav";
 import { useAppContext } from "@/context";
+import { removeItem } from "@/store";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
 const Favorites = () => {
-  const {imageStore} = useAppContext()
+  const {imageStore, dispatch} = useAppContext()
   const [favs, setFavs] = useState([])
 
   useEffect(()=>{
@@ -13,8 +14,8 @@ const Favorites = () => {
     setFavs(images)
   }, [imageStore])
 
-  const handleSelect = () => {
-
+  const handleSelect = (image) => {
+    removeItem(dispatch, image)
   }
 
   return (
