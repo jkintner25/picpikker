@@ -15,7 +15,7 @@ In order for the API requests to work, you'll need to do the following:
 ```javascript
 module.exports = {
   env: {
-    NEXT_PUBLIC_API: {your-unsplash-api-key},
+    NEXT_PUBLIC_API: 'your-unsplash-api-key',
   },
 }
 ```
