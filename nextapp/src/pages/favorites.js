@@ -6,17 +6,24 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 
 const Favorites = () => {
-  const {imageStore, dispatch} = useAppContext()
-  const [favs, setFavs] = useState([])
+  const { imageStore, dispatch } = useAppContext();
+  const [dink, setDink] = useState(false);
+  const [favs, setFavs] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     let images = Object.values(imageStore)
     setFavs(images)
+  }, [dink])
+
+  useEffect(() => {
+    let newStorage = JSON.stringify(imageStore)
+    localStorage.setItem('picpicker', newStorage)
+    setDink(!dink)
   }, [imageStore])
 
   const handleSelect = (image) => {
     removeItem(dispatch, image)
-  }
+  };
 
   return (
     <>
@@ -31,11 +38,11 @@ const Favorites = () => {
         <h1 className='text-7xl font-bold text-center my-20' >Favorites</h1>
         <div className="w-full max-w-7xl p-5 pb-10 mx-auto mb-10 gap-3 columns-4 space-y-5">
 
-        {favs ? favs.map(image=>{
-          return <ImageTile key={image.id} image={image} handleSelect={handleSelect} />
-        })
-        :
-        <h1>Pick some pics!</h1>}
+          {favs ? favs.map(image => {
+            return <ImageTile key={image.id} image={image} handleSelect={handleSelect} />
+          })
+            :
+            <h1>Pick some pics!</h1>}
         </div>
       </main>
     </>
