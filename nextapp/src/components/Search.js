@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchImages, unsplashAPI } from "@/pages/api/unsplash";
 
 const Search = ({ setImages }) => {
   const [searchQuery, setSearchQuery] = useState('')
 
+  useEffect(()=>{
+    updateSearchField()
+  }, [searchQuery])
+
   const submit = async (e) => {
     e.preventDefault()
+    if (!searchQuery) return;
     let images = await fetch(unsplashAPI.search.concat(searchQuery))
     let data = await images.json()
     setImages(data.results);
@@ -17,6 +22,10 @@ const Search = ({ setImages }) => {
     fetchImages().then(res => {
       setImages(res)
     })
+  }
+
+  const updateSearchField = () => {
+    setSearchQuery(searchQuery.replace(/[^a-zA-Z ]/g, ""))
   }
 
   return (
