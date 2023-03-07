@@ -25,7 +25,7 @@ const Search = ({ setImages }) => {
   }
 
   const updateSearchField = () => {
-    setSearchQuery(searchQuery.replace(/[^a-zA-Z ]/g, ""))
+    setSearchQuery(searchQuery.replace(/[^a-zA-Z\d ]/g, ""))
   }
 
   return (
