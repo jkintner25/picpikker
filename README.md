@@ -9,6 +9,8 @@ $> cd nextapp
 $> npm install
 $> npm run dev
 ```
+Project will run on `localhost:3000` in your browser.
+
 In order for the API requests to work, you'll need to do the following:
 1. In the nextapp directory, create a file called `next.config.js`.
 2. Paste this code:
