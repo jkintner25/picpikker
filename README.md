@@ -1,6 +1,8 @@
 # Pic Pickür
 A simple image gallery allowing users to search for images by keyword and add/remove them to/from the favorites page.
 
+## [Live Demo](https://picpicker-eta.vercel.app)
+
 ## Run Locally
 
 ```javascript
